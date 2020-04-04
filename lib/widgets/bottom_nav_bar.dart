@@ -20,33 +20,36 @@ class _BottomNavBarState extends State<BottomNavBar> {
       backgroundColor: Colors.white,
       color: Colors.red,
       buttonBackgroundColor: Colors.red,
-      height: 60,
+      height: 50,
       animationDuration: Duration(
-        milliseconds: 100,
+        milliseconds: 200,
       ),
       index: selectedIndex,
       animationCurve: Curves.bounceInOut,
       items: <Widget>[
         IconButton(
-          icon: Icon(EvaIcons.list, size: 30, color: Colors.white),
+          icon: Icon(EvaIcons.list, size: 20, color: Colors.white),
           onPressed: null,
         ),
         IconButton(
-          icon: Icon(EvaIcons.heart, size: 30, color: Colors.white),
+          icon: Icon(EvaIcons.heart, size: 20, color: Colors.white),
           onPressed: null,
         ),
         IconButton(
-          icon: Icon(EvaIcons.plus, size: 30, color: Colors.white),
+          icon: Icon(EvaIcons.plus, size: 20, color: Colors.white),
           onPressed: null,
         ),
         IconButton(
-          icon: Icon(EvaIcons.person, size: 30, color: Colors.white),
+          icon: Icon(EvaIcons.person, size: 20, color: Colors.white),
           onPressed: null,
         ),
         IconButton(
-          icon: Icon(EvaIcons.settings, size: 30, color: Colors.white),
-          onPressed: () => _pageNotifier.changeScreen(
-              context, PageData(page_title: 'Settings', screen: Settings())),
+          icon: Icon(EvaIcons.settings, size: 20, color: Colors.white),
+          onPressed: () {
+            _pageNotifier.changeScreen(
+                context, PageData(page_title: 'Settings', screen: Settings()));
+            setState(() => selectedIndex = 4);
+          },
         ),
       ],
       onTap: (index) {

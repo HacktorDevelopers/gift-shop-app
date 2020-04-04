@@ -22,51 +22,53 @@ class OneGiftRow extends StatelessWidget {
               page_title: 'Product Detail', screen: GiftDetail(gift: gift))),
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 5),
-        padding: const EdgeInsets.symmetric(horizontal: 5),
         decoration: BoxDecoration(
           color: Colors.red.withOpacity(0.2),
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Container(
-              width: 120,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Text(
-                    gift.name,
-                    style: Theme.of(context)
-                        .textTheme
-                        .display4
-                        .copyWith(fontSize: 25),
-                  ),
-                  (gift.type == GiftType.Free)
-                      ? buildGiftTypeTag(text: 'Free')
-                      : (gift.type == GiftType.Paid)
-                          ? buildGiftTypeTag(
-                              text: CURRENCY + ' ' + gift.price.toString())
-                          : buildGiftTypeTag(text: 'Exchange')
-                ],
+        child: Material(
+          elevation: 2,
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          color: Colors.red.withOpacity(0.2),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Container(
+                width: 120,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Text(
+                      gift.name,
+                      style: Theme.of(context)
+                          .textTheme
+                          .display4
+                          .copyWith(fontSize: 25),
+                    ),
+                    (gift.type == GiftType.Free)
+                        ? buildGiftTypeTag(text: 'Free')
+                        : (gift.type == GiftType.Paid)
+                            ? buildGiftTypeTag(
+                                text: CURRENCY + ' ' + gift.price.toString())
+                            : buildGiftTypeTag(text: 'Exchange')
+                  ],
+                ),
               ),
-            ),
-            Hero(
-              tag: gift.name,
-              child: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        colorFilter: ColorFilter.mode(
-                            Colors.red.withOpacity(0.2), BlendMode.darken),
-                        image: AssetImage(gift.giftImage),
-                        fit: BoxFit.cover),
-                    borderRadius: BorderRadius.all(Radius.circular(20))),
-                alignment: Alignment.centerLeft,
-                width: 121,
-              ),
-            )
-          ],
+              Hero(
+                tag: gift.name,
+                child: Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: NetworkImage(gift.giftImage[0]),
+                          fit: BoxFit.cover),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  alignment: Alignment.centerLeft,
+                  width: 121,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

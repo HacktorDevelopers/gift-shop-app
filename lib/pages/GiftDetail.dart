@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gift/src/models/Gift.dart';
 import 'package:gift/src/utils/constants.dart';
 import 'package:gift/widgets/GeneralWidget.dart';
+import 'package:gift/widgets/product_image_gallery.dart';
 
 class GiftDetail extends StatelessWidget {
   GiftDetail({this.gift});
@@ -12,17 +13,15 @@ class GiftDetail extends StatelessWidget {
     return SafeArea(
         child: Stack(children: <Widget>[
       Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(gift.giftImage),
-                fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode(
-                    Colors.red.withOpacity(0.2), BlendMode.darken))),
+        child: ProductImageGallery(
+          images: gift.giftImage,
+        ),
       ),
       Align(
         alignment: Alignment.bottomRight,
         child: Container(
           alignment: Alignment.bottomRight,
+          height: 400,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -45,6 +44,7 @@ class GiftDetail extends StatelessWidget {
         ),
       ),
     ])
+
 //      CustomScrollView(slivers: [
 //        SliverAppBar(
 //          expandedHeight: 250,

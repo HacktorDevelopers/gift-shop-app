@@ -59,7 +59,7 @@ class CategoryCol extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .display1
-                          .copyWith(fontSize: 25, color: Colors.white),
+                          .copyWith(fontSize: 15, color: Colors.white),
                     ),
                   ],
                 ),

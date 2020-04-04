@@ -39,7 +39,8 @@ class CategoryProduct extends StatelessWidget {
                 },
                 popupListItemBuilder: (Gift gift) {
                   return ListTile(
-                    leading: CircleAvatar(child: Image.asset(gift.giftImage)),
+                    leading:
+                        CircleAvatar(child: Image.network(gift.giftImage[0])),
                     title: Text(gift.name),
                     subtitle: Text(CURRENCY + ' ' + gift.price.toString()),
                   );
