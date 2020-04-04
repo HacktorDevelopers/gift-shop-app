@@ -24,7 +24,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
       animationDuration: Duration(
         milliseconds: 200,
       ),
-      index: selectedIndex,
+      index: _pageNotifier.getPage == null
+          ? selectedIndex
+          : _pageNotifier.getPage.tabIndex,
       animationCurve: Curves.bounceInOut,
       items: <Widget>[
         IconButton(
@@ -47,7 +49,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
           icon: Icon(EvaIcons.settings, size: 20, color: Colors.white),
           onPressed: () {
             _pageNotifier.changeScreen(
-                context, PageData(page_title: 'Settings', screen: Settings()));
+                context,
+                PageData(
+                    page_title: 'Settings', screen: Settings(), tabIndex: 4));
             setState(() => selectedIndex = 4);
           },
         ),

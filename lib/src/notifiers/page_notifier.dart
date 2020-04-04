@@ -7,7 +7,7 @@ import 'package:gift/src/models/page_data.dart';
 
 class PageNotifier extends ChangeNotifier {
   PageData _initialPage =
-      PageData(page_title: 'Product Page', screen: MyHomePage());
+      PageData(page_title: 'Product Page', screen: MyHomePage(), tabIndex: 2);
   PageData _currentScreen;
   List<PageData> _visitedScreens = [];
 
